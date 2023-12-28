@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <%= link_to 'Login with GitHub', auth_at_provider_path(:provider => :github) %>
+    <% if logged_in? %>
+      ログイン中
+      <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
+    <% else %>
+      ログインしていません
+    <% end %>
     <%= yield %>
   </body>
 </html>
