@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_28_042129) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_083902) do
   create_table "authentications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "provider", null: false
@@ -24,6 +24,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_042129) do
     t.string "nickname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "mattermost_id"
+    t.boolean "activated", default: false
+    t.integer "role", default: 0
   end
 
 end
