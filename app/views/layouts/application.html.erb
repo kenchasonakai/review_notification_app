@@ -11,15 +11,13 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
-    <%= link_to 'Login with GitHub', auth_at_provider_path(:provider => :github) %>
     <% if logged_in? %>
-      ログイン中
-      <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
+      <%= render 'shared/header' %>
     <% else %>
-      ログインしていません
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
     <% end %>
     <%= yield %>
   </body>
