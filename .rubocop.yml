@@ -23,7 +23,7 @@ Rails/WhereNot:
 Rails/WhereNotWithMultipleConditions:
   Enabled: true
 Rails/ShortI18n:
-  Enabled: true
+  Enabled: false
 Rails/SquishedSQLHeredocs:
   Enabled: true
 Rails/StripHeredoc:
@@ -87,7 +87,7 @@ Rails/I18nLazyLookup:
 Rails/I18nLocaleAssignment:
   Enabled: true
 Rails/I18nLocaleTexts:
-  Enabled: true
+  Enabled: false
 Rails/IgnoredColumnsAssignment:
   Enabled: true
 Rails/Inquiry:
