@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
     <%= link_to 'Login with GitHub', auth_at_provider_path(:provider => :github) %>
     <% if logged_in? %>
       ログイン中
