@@ -6,6 +6,7 @@ AllCops:
     - db/**/*
     - spec/**/*
     - config/**/*
+    - vendor/**/*
     - config.ru
     - Gemfile
     - Rakefile

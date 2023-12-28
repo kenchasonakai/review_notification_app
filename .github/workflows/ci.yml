@@ -2,16 +2,17 @@ name: "Ruby on Rails CI"
 on:
   push:
 jobs:
-  lint:
+  rubocop:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Install Ruby and gems
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Bundle Install
-        run: bundle install
-      - name: Lint Ruby files
+
+      - name: Run rubocop
         run: bundle exec rubocop
