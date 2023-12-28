@@ -7,18 +7,11 @@ class OauthsController < ApplicationController
 
   def callback
     provider = auth_params[:provider]
-    if @user = login_from(provider)
-      redirect_to root_path, :notice => "ログインしました"
+    @user = login_from(provider)
+    if @user
+      redirect_to root_path, notice: 'ログインしました'
     else
-      begin
-        @user = create_from(provider)
-
-        reset_session
-        auto_login(@user)
-        redirect_to root_path, :notice => "ログインしました"
-      rescue
-        redirect_to root_path, :alert => "ログインに失敗しました"
-      end
+      create_user_from_provider(provider)
     end
   end
 
@@ -26,5 +19,15 @@ class OauthsController < ApplicationController
 
   def auth_params
     params.permit(:code, :provider)
+  end
+
+  def create_user_from_provider(provider)
+    @user = create_from(provider)
+
+    reset_session
+    auto_login(@user)
+    redirect_to root_path, notice: 'ログインしました'
+  rescue StandardError
+    redirect_to root_path, alert: 'ログインに失敗しました'
   end
 end
