@@ -11,5 +11,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Bundle Install
+        run: bundle install
       - name: Lint Ruby files
         run: bundle exec rubocop
