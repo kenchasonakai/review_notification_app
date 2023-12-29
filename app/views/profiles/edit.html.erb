@@ -1,0 +1,47 @@
+<section>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4 text-center">
+              <h1 class="my-5"><i class="bi bi-person-circle"></i></h1>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h5 class="mb-0">プロフィール</h5>
+                </div>
+                <hr class="mt-0 mb-4">
+                <%= form_with model: @user, url: profile_path do |f| %>
+                  <% if @user.errors.any? %>
+                    <div class="alert alert-danger mt-2" role="alert">
+                      <ul class="mb-0 list-inline">
+                        <% @user.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                  <div class="row pt-1">
+                    <div class="mb-3">
+                      <h6 class="h6">ニックネーム</h6>
+                      <%= f.text_field :nickname, class: "form-control" %>
+                    </div>
+                  </div>
+                  <div class="row pt-1">
+                    <div class="mb-3">
+                      <h6 class="h6">MattermostID</h6>
+                      <%= f.text_field :mattermost_id, class: "form-control" %>
+                    </div>
+                  </div>
+                  <%= f.submit "更新", class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
