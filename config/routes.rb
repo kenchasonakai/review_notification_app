@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
   delete "logout" => "user_sessions#destroy", :as => :logout
+  resource :profile, only: [:show, :edit, :update]
 end
