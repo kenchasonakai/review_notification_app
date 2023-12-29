@@ -4,15 +4,16 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(current_user.id)
   end
 
   def update
-    @user = current_user
-    if @user.update(user_params, context: :account_setup)
-      redirect_to root_path, notice: 'Your profile has been updated.'
+    @user = User.find(current_user.id)
+    @user.assign_attributes(user_params)
+    if @user.save(context: :account_setup)
+      redirect_to profile_path, notice: 'プロフィールを更新しました。'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
