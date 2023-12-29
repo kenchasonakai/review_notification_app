@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        nickname: ニックネーム
+        mattermost_id: ユーザーID(Mattermost)
+        role: 権限
+        activated: アクティベート
