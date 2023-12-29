@@ -12,7 +12,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item disabled" href="#">マイページ</a></li>
-            <li><a class="dropdown-item" href="#">プロフィール</a></li>
+            <li><%= link_to 'プロフィール', profile_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
           </ul>
