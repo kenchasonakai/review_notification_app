@@ -15,10 +15,10 @@ class ReviewRequest < ApplicationRecord
   private
 
   def set_reviewer
-    self.reviewer = reviewer.present? ? reviewer : User.where.not(id: reviewee_id).sample
+    self.reviewer = reviewer.presence || User.where.not(id: reviewee_id).sample
   end
 
   def set_message
-    self.message = message.present? ? message : "レビューお願いします！"
+    self.message = message.presence || 'レビューお願いします！'
   end
 end
