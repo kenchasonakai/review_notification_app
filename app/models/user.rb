@@ -11,8 +11,7 @@ class User < ApplicationRecord
   has_many :review_requests, dependent: :destroy, foreign_key: :reviewee_id, class_name: 'ReviewRequest'
   has_many :reviewer_requests, dependent: :destroy, foreign_key: :reviewer_id, class_name: 'ReviewRequest'
 
-  def select_assignee
-    # TODO: 仮置き中、別タスクで実装する
-    User.where.not(id: id).sample
+  def profile_setup?
+    nickname.present? && mattermost_id.present?
   end
 end
