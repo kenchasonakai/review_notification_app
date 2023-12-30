@@ -2,9 +2,15 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      review_request: レビュー依頼
     attributes:
       user:
         nickname: ニックネーム
         mattermost_id: ユーザーID(Mattermost)
         role: 権限
         activated: アクティベート
+      review_request:
+        reviewee: 依頼者
+        reviewer: レビュワー
+        url: プルリクエストURL
+        message: メッセージ
