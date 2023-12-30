@@ -1,0 +1,31 @@
+<div class="container w-50 p-2">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1>レビュー依頼一覧</h1>
+    <%= link_to new_review_request_path do %>
+      <i class="bi bi-plus-square h2"></i>
+    <% end %>
+  </div>
+  <hr>
+  <% @review_requests.each do |review_request| %>
+    <div class="card mt-3 p-3">
+      <div class="card-body">
+        <h5 class="card-title row">
+          <span class="col-4"><%= ReviewRequest.human_attribute_name(:reviewer) %></span>
+          <span class="col-8"><%= review_request.reviewer.nickname || '設定されていません' %></span>
+        </h5>
+        <p class="card-text row">
+          <span class="col-4"><%= ReviewRequest.human_attribute_name(:reviewee) %></span>
+          <span class="col-8"><%= review_request.reviewee.nickname || '設定されていません' %></span>
+        </p>
+        <p class="row">
+          <span class="col-4"><%= ReviewRequest.human_attribute_name(:url) %></span>
+          <span class="col-8"><%= link_to review_request.url, review_request.url, class: 'card-link', target: '_blank' %></span>
+        </p>
+        <p class="row">
+          <span class="col-4"><%= ReviewRequest.human_attribute_name(:message) %></span>
+          <span class="col-8"><%= review_request.message %></span>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
