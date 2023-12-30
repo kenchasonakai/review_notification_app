@@ -4,6 +4,7 @@ class CreateReviewRequests < ActiveRecord::Migration[7.1]
       t.references :reviewee, null: false
       t.references :reviewer, null: false
       t.string :url, null: false
+      t.text :message, null: false
 
       t.timestamps
     end

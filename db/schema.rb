@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_29_065814) do
     t.bigint "reviewee_id", null: false
     t.bigint "reviewer_id", null: false
     t.string "url", null: false
+    t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reviewee_id"], name: "index_review_requests_on_reviewee_id"
