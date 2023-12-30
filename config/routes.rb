@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
   delete "logout" => "user_sessions#destroy", :as => :logout
   resource :profile, only: [:show, :edit, :update]
+  resources :review_requests, only: [:index, :new, :create]
 end
