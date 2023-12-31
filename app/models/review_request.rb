@@ -9,7 +9,10 @@ class ReviewRequest < ApplicationRecord
   before_validation :set_message, on: :create
 
   def notify
-    # TODO: Send notification to reviewer
+    text = "@#{reviewee.mattermost_id} @#{reviewer.mattermost_id} \n#{url} \n#{message}"
+    # TODO: Groupを作成する時にGroupのチャンネルIDを取得するように変更する
+    channel = 'c016s84r344'
+    Notification::Mattermost.new(message: text, channel:).call
   end
 
   private
