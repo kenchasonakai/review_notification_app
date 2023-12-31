@@ -31,8 +31,6 @@ gem "jbuilder"
 
 gem "sorcery"
 
-gem 'mattermost-api4-ruby'
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
