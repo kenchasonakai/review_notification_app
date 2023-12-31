@@ -6,11 +6,11 @@ class ReviewRequestsController < ApplicationController
   end
 
   def new
-    @review_request = current_user.review_requests.new
+    @review_request = current_user.review_requests.build
   end
 
   def create
-    @review_request = current_user.review_requests.new(review_request_params)
+    @review_request = current_user.review_requests.build(review_request_params)
     if @review_request.save
       @review_request.notify
       redirect_to review_requests_path, notice: 'レビュー依頼を作成しました'
