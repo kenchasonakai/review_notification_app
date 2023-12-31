@@ -329,3 +329,5 @@ Style/HashExcept:
   Enabled: true
 Style/IfWithBooleanLiteralBranches:
   Enabled: true
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
