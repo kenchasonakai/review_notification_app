@@ -1,8 +1,15 @@
 <div class="container w-50 p-2">
   <div class="d-flex align-items-center justify-content-between">
     <h1>レビュー依頼一覧</h1>
-    <%= link_to new_review_request_path do %>
-      <i class="bi bi-plus-square h2"></i>
+    <% if current_user.activated? %>
+      <%= link_to new_review_request_path do %>
+        <i class="bi bi-plus-square h2"></i>
+      <% end %>
+    <% else %>
+      <span class="tooltips">
+        <i class="bi bi-question-circle h3 text-black-50"></i>
+        <span class="tooltip-text text-wrap">グループに配属後レビュー依頼が出来ます</span>
+      </span>
     <% end %>
   </div>
   <hr>
