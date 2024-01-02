@@ -1,11 +1,6 @@
 class ReviewRequestPolicy < ApplicationPolicy
   attr_reader :user, :review_request
 
-  def initialize(user, review_request)
-    @user = user
-    @review_request = review_request
-  end
-
   def index?
     true
   end
@@ -23,7 +18,7 @@ class ReviewRequestPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || user.activated? && user == review_request.user
+    user.admin? || (user.activated? && user == record.user)
   end
 
   def edit?
