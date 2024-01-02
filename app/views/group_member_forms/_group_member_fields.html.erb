@@ -1,0 +1,4 @@
+<div class="nested-fields d-flex">
+  <%= collection_select :group_member_ids, nil, User.all, :id, :nickname, { selected: group_member&.user_id }, class: 'form-control mb-2', id: nil %>
+  <i class="bi bi-trash3 ms-3 text-danger" data-action="click->group_member#remove"></i>
+</div>
