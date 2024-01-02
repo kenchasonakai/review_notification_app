@@ -1,0 +1,5 @@
+<%= turbo_stream.append "group_members_field" do %>
+  <%= fields_for :group_mambers, @group.group_members.build do |group_member_field| %>
+    <%= render 'group_member_fields', f: group_member_field, group_member: nil %>
+  <% end %>
+<% end %>

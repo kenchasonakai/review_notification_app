@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       review_request: レビュー依頼
+      group: レビューグループ
     attributes:
       user:
         nickname: ニックネーム
@@ -14,3 +15,6 @@ ja:
         reviewer: レビュワー
         url: プルリクエストURL
         message: メッセージ
+      group:
+        name: グループ名
+        mattermost_channel_id: MattermostチャンネルID

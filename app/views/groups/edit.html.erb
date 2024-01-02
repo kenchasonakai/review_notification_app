@@ -1,0 +1,38 @@
+<div class="container w-50 p-2">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1>グループ編集</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <%= form_with model: @group do |f| %>
+            <div class="form-group mb-2">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+            <div class="form-group mb-2">
+              <%= f.label :mattermost_channel_id %>
+              <%= f.text_field :mattermost_channel_id, class: "form-control" %>
+            </div>
+            <div class="form-group" id="group_members_field" data-controller="group_member">
+              <div class="d-flex align-items-center position-relative">
+                <p class="form-label">メンバー追加</p>
+                <%= link_to group_member_forms_path(group_id: @group), class: 'stretched-link', data: { turbo_method: :post } do %>
+                  <i class="bi bi-person-fill-add h5 ms-3"></i>
+                <% end %>
+              </div>
+              <% @group.group_members.each do |group_member| %>
+                <%= render 'group_member_forms/group_member_fields', group_member: group_member %>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <%= f.submit nil, class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

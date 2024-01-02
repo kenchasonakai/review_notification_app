@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   delete "logout" => "user_sessions#destroy", :as => :logout
   resource :profile, only: [:show, :edit, :update]
   resources :review_requests, only: [:index, :new, :create]
+  resources :groups do
+    resources :group_members, only: [:create, :destroy], as: :members
+  end
+  resources :group_member_forms, only: [:create, :destroy]
 end
