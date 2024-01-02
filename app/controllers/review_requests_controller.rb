@@ -1,6 +1,6 @@
 class ReviewRequestsController < ApplicationController
   before_action :check_user_profile, only: %i[new create]
-  # before_action :check_joined_any_group, only: %i[new create]
+  before_action :check_joined_any_group, only: %i[new create]
 
   def index
     @review_requests = ReviewRequest.includes(:reviewer, :reviewee).order(created_at: :desc)
