@@ -173,6 +173,8 @@ GEM
       stringio
     puma (6.4.0)
       nio4r (~> 2.0)
+    pundit (2.3.1)
+      activesupport (>= 3.0.0)
     racc (1.7.3)
     rack (3.0.8)
     rack-session (2.0.0)
@@ -289,6 +291,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   pry-byebug
   puma (>= 5.0)
+  pundit (~> 2.3)
   rails (~> 7.1.2)
   rubocop-rails
   sorcery
