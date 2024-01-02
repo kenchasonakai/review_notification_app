@@ -1,0 +1,65 @@
+<div class="container w-50 p-2">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1>グループ一覧</h1>
+    <%= link_to 'グループを追加', new_group_path, class: 'btn btn-primary' %>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <% @groups.each do |group| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h5 class="card-title mb-0"><%= group.name %></h5>
+              <%= link_to edit_group_path(group) do %>
+                <i class="bi bi-pencil h4 text-success"></i>
+              <% end %>
+            </div>
+            <p class="card-text">channel_id: <%= group.mattermost_channel_id.presence || 'チャンネルIDが設定されていません' %></p>
+          </div>
+          <div class="card-body text-center">
+            <%= form_with url: group_members_path(group), class: "row" do |f| %>
+              <div class="col-8">
+                <%= f.collection_select :user_id, User.all, :id, :nickname, { include_blank: '追加したいメンバーを選択' }, class: 'form-select' %>
+              </div>
+              <div class="col-4">
+                <%= f.submit '追加', class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <div class="table">
+              <table class="table no-wrap mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="border-0 text-uppercase font-medium">メンバー名</th>
+                    <th scope="col" class="border-0 text-uppercase font-medium">グループ追加日</th>
+                    <th scope="col" class="border-0"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% group.users.each do |user| %>
+                    <tr>
+                      <td>
+                        <span class="font-medium mb-0"><%= user.nickname || '設定されていません' %></h5>
+                      </td>
+                      <td>
+                        <span class="text-muted"><%= strfdate(group.added_at(user)) %></span>
+                      </td>
+                      <td>
+                        <%= link_to group_member_path(group, user), data: { turbo_method: :delete, turbo_confirm: 'グループから外しますか？' } do %>
+                          <i class="bi bi-file-minus h4 text-danger"></i>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
