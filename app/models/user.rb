@@ -12,6 +12,8 @@ class User < ApplicationRecord
                              inverse_of: :reviewee
   has_many :reviewer_requests, dependent: :destroy, foreign_key: :reviewer_id, class_name: 'ReviewRequest',
                                inverse_of: :reviewer
+  has_many :group_members, dependent: :destroy
+  has_many :groups, through: :group_members
 
   def profile_setup?
     nickname.present? && mattermost_id.present?
