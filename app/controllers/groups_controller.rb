@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
     if @group_form.save
       redirect_to groups_path
     else
-      flash.now[:error] = @group_form.errors.full_messages
+      flash.now[:alert] = @group_form.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
     if @group_form.update
       redirect_to groups_path
     else
-      flash.now[:error] = @group_form.errors.full_messages
+      flash.now[:alert] = @group_form.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
