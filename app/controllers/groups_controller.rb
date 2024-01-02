@@ -1,18 +1,22 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.all
+    authorize @groups
   end
 
   def new
     @group = Group.new
+    authorize @group
   end
 
   def edit
     @group = Group.find(params[:id])
+    authorize @group
   end
 
   def create
     @group = Group.new(group_params)
+    authorize @group
     @group_form = GroupForm.new(group_params)
     if @group_form.save
       redirect_to groups_path
@@ -24,6 +28,7 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
+    authorize @group
     @group_form = GroupForm.new(group_params.merge(group: @group))
     if @group_form.update
       redirect_to groups_path
