@@ -1,0 +1,5 @@
+ja:
+  pundit:
+    default: 権限がありません
+    review_request_policy:
+      new?: レビュー依頼を行うには管理者の承認が必要です
