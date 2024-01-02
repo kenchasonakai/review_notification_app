@@ -9,7 +9,7 @@ ja:
         nickname: ニックネーム
         mattermost_id: ユーザーID(Mattermost)
         role: 権限
-        activated: アクティベート
+        activated: アクティベート状況
       review_request:
         reviewee: 依頼者
         reviewer: レビュワー

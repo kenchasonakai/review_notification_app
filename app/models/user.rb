@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def profile_setup?
     nickname.present? && mattermost_id.present?
   end
+
+  def joined_any_group?
+    groups.present?
+  end
 end

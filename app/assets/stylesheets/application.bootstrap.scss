@@ -6,3 +6,33 @@
   background-color: tomato;
   display: table;
 }
+
+.tooltips {
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
+  display: inline-block;
+  padding: 5px;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  inline-size: 150px;
+  overflow-wrap: break-word;
+  background: #333;
+  color: #fff;
+  border-radius: 3px;
+  transition: 0.3s ease-in;
+}
+
+.tooltips:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+}
