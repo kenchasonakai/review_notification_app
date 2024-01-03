@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_31_075337) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_03_052426) do
   create_table "authentications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "provider", null: false
@@ -44,6 +44,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_31_075337) do
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id", null: false
+    t.index ["group_id"], name: "index_review_requests_on_group_id"
     t.index ["reviewee_id"], name: "index_review_requests_on_reviewee_id"
     t.index ["reviewer_id"], name: "index_review_requests_on_reviewer_id"
   end
@@ -59,6 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_31_075337) do
 
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
+  add_foreign_key "review_requests", "groups"
   add_foreign_key "review_requests", "users", column: "reviewee_id"
   add_foreign_key "review_requests", "users", column: "reviewer_id"
 end

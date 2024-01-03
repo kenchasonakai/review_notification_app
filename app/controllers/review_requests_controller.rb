@@ -19,14 +19,15 @@ class ReviewRequestsController < ApplicationController
       @review_request.notify
       redirect_to review_requests_path, notice: 'レビュー依頼を作成しました'
     else
-      render :new
+      flash.now[:alert] = 'レビュー依頼が出来ませんでした'
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
   def review_request_params
-    params.require(:review_request).permit(:url, :message)
+    params.require(:review_request).permit(:url, :message).merge(group: current_user.group)
   end
 
   def check_user_profile
