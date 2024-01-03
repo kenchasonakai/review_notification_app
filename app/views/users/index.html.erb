@@ -1,0 +1,40 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"><%= User.human_attribute_name(:id) %></th>
+        <th scope="col"><%= User.human_attribute_name(:nickname) %></th>
+        <th scope="col"><%= User.human_attribute_name(:mattermost_id) %></th>
+        <th scope="col"><%= User.human_attribute_name(:role) %></th>
+        <th scope="col"><%= User.human_attribute_name(:activated) %></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr class="align-middle">
+          <th scope="row"><%= user.id %></th>
+          <td class="col"><%= user.nickname %></td>
+          <td class="col"><%= user.mattermost_id %></td>
+          <td class="col-2"><%= t "activerecord.enums.user.role.#{user.role}" %></td>
+          <td class="col-3"><%= user.activated? ? 'アクティベート済み' : 'アクティベート待ち' %></td>
+          <td class="col"><%= link_to "編集", edit_user_path(user), class: "btn btn-success ml-2" %></td>
+          <% if user.activated? %>
+            <td class="col">
+              <%= link_to user_activate_path(user), data: { turbo_method: :delete } do %>
+                <i class="bi bi-unlock-fill h4 text-success"></i>
+              <% end %>
+            </td>
+          <% else %>
+            <td class="col">
+              <%= link_to user_activate_path(user), data: { turbo_method: :post } do %>
+                <i class="bi bi-lock-fill h4 text-danger"></i>
+              <% end %>
+            </td>
+          <% end %>
+        <tr>
+      <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
+    @group = Group.new
     authorize @group
     @group_form = GroupForm.new(group_params)
     if @group_form.save

@@ -12,4 +12,7 @@ Rails.application.routes.draw do
     resources :group_members, only: [:create, :destroy], as: :members
   end
   resources :group_member_forms, only: [:create, :destroy]
+  resources :users do
+    resource :activate, only: [:create, :destroy], module: :users
+  end
 end

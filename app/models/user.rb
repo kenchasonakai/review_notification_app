@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :group_members, dependent: :destroy
   has_many :groups, through: :group_members
 
+  scope :activated, -> { where(activated: true) }
+  scope :prioritize_unjoined_group, -> { left_joins(:group_members).group(:id).order('COUNT(group_members.id) ASC') }
+
   def profile_setup?
     nickname.present? && mattermost_id.present?
   end
