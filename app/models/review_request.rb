@@ -10,16 +10,18 @@ class ReviewRequest < ApplicationRecord
   before_validation :set_message, on: :create
 
   def notify
-    text = "@#{reviewee.mattermost_id} @#{reviewer.mattermost_id} \n#{url} \n#{message}"
-    # TODO: Groupを作成する時にGroupのチャンネルIDを取得するように変更する
-    channel = 'c016s84r344'
+    mention_text = "@#{reviewer.mattermost_id} (cc: @#{reviewee.mattermost_id}) \n"
+    reviewer_text = "レビュワー: #{reviewer.nickname}さん \n"
+    pull_request_url_text = "url: #{url} \n"
+    text = "#{mention_text}#{reviewer_text}#{pull_request_url_text}#{message}"
+    channel = group.mattermost_channel_id
     Notification::Mattermost.new(message: text, channel:).call
   end
 
   private
 
   def set_reviewer
-    self.reviewer = reviewer.presence || User.where.not(id: reviewee_id).sample
+    self.reviewer = reviewer.presence || group.users.where.not(id: reviewee_id).sample
   end
 
   def set_message

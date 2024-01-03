@@ -25,4 +25,8 @@ class User < ApplicationRecord
   def joined_any_group?
     groups.present?
   end
+
+  def group
+    groups&.sample
+  end
 end
