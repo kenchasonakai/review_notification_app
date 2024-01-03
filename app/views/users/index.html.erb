@@ -1,23 +1,25 @@
 <div class="container">
   <table class="table table-striped">
     <thead>
-      <tr>
+      <tr class="text-center">
         <th scope="col"><%= User.human_attribute_name(:id) %></th>
         <th scope="col"><%= User.human_attribute_name(:nickname) %></th>
+        <th scope="col"><%= User.human_attribute_name(:github_id) %></th>
         <th scope="col"><%= User.human_attribute_name(:mattermost_id) %></th>
-        <th scope="col"><%= User.human_attribute_name(:role) %></th>
         <th scope="col"><%= User.human_attribute_name(:activated) %></th>
+        <th scope="col"><%= User.human_attribute_name(:role) %></th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
-        <tr class="align-middle">
+        <tr class="align-middle text-center">
           <th scope="row"><%= user.id %></th>
           <td class="col"><%= user.nickname %></td>
+          <td class="col"><%= user.github_id %></td>
           <td class="col"><%= user.mattermost_id %></td>
-          <td class="col-2"><%= t "activerecord.enums.user.role.#{user.role}" %></td>
           <td class="col-3"><%= user.activated? ? 'アクティベート済み' : 'アクティベート待ち' %></td>
+          <td class="col-2"><%= t "activerecord.enums.user.role.#{user.role}" %></td>
           <td class="col"><%= link_to "編集", edit_user_path(user), class: "btn btn-success ml-2" %></td>
           <% if user.activated? %>
             <td class="col">

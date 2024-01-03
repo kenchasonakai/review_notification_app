@@ -6,10 +6,12 @@ ja:
       group: レビューグループ
     attributes:
       user:
+        id: ID
         nickname: ニックネーム
         mattermost_id: ユーザーID(Mattermost)
         role: 権限
         activated: アクティベート状況
+        github_id: GitHub
       review_request:
         reviewee: 依頼者
         reviewer: レビュワー

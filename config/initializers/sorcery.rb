@@ -143,7 +143,7 @@ Rails.application.config.sorcery.configure do |config|
   else
     config.github.callback_url = "http://localhost:3000/oauth/callback?provider=github"
   end
-  # config.github.user_info_mapping = {:email => "name"}
+  config.github.user_info_mapping = {:github_id => "login"}
   # config.github.scope = ""
   #
   # config.paypal.key = ""

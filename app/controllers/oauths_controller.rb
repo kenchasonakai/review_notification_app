@@ -10,6 +10,7 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
     @user = login_from(provider)
     if @user
+      update_user_info(provider)
       redirect_to root_path, notice: 'ログインしました'
     else
       create_user_from_provider(provider)
@@ -30,5 +31,14 @@ class OauthsController < ApplicationController
     redirect_to root_path, notice: 'ログインしました'
   rescue StandardError
     redirect_to root_path, alert: 'ログインに失敗しました'
+  end
+
+  def update_user_info(provider)
+    sorcery_fetch_user_hash(provider)
+    github_id = @user_hash.dig(:user_info, 'login')
+    return if github_id.blank?
+    return if @user.github_id == github_id
+
+    @user.update(github_id:)
   end
 end
