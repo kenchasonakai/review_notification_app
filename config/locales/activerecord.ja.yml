@@ -18,3 +18,8 @@ ja:
       group:
         name: グループ名
         mattermost_channel_id: MattermostチャンネルID
+    enums:
+      user:
+        role:
+          general: 一般ユーザー
+          admin: 管理者
