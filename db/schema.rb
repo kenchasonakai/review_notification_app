@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_03_052426) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_03_065640) do
   create_table "authentications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "provider", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_03_052426) do
     t.string "mattermost_id"
     t.boolean "activated", default: false
     t.integer "role", default: 0
+    t.string "github_id"
   end
 
   add_foreign_key "group_members", "groups"
