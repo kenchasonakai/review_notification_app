@@ -1,0 +1,28 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">MattermostID取得</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with url: fetch_mattermost_id_path do |f| %>
+          <div class="mb-3">
+            <%= f.label :email, 'メールアドレス', class: "form-label" %>
+            <%= f.text_field :email, class: "form-control" %>
+            <p class="form-text text-muted">Mattermostのメールアドレスを入力してください</p>
+          </div>
+          <div class="mb-3">
+            <%= f.label :password, 'パスワード', class: "form-label" %>
+            <%= f.password_field :password, class: "form-control" %>
+            <p class="form-text text-muted">Mattermostのパスワードを入力してください</p>
+          </div>
+          <%= f.submit 'IDを取得', class: "btn btn-primary", data: { bs_dismiss: "modal" } %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
