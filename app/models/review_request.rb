@@ -1,6 +1,7 @@
 class ReviewRequest < ApplicationRecord
   belongs_to :reviewer, class_name: 'User'
   belongs_to :reviewee, class_name: 'User'
+  belongs_to :group
 
   validates :url, presence: true
   validates :message, presence: true
