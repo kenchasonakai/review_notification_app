@@ -5,24 +5,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params["id"])
+    @user = User.find_by(id: params['id'])
     authorize @user
   end
 
   def edit
-    @user = User.find_by(id: params["id"])
+    @user = User.find_by(id: params['id'])
     authorize @user
   end
 
   def update
-    user = User.find_by(id: params["id"])
+    user = User.find_by(id: params['id'])
     authorize user
     user.update(user_params)
     redirect_to users_path
   end
 
   def destroy
-    user = User.find_by(id: params["id"])
+    user = User.find_by(id: params['id'])
     authorize user
     user.destroy
     redirect_to users_path
