@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :users do
     resource :activate, only: [:create, :destroy], module: :users
   end
+  resource :fetch_mattermost_id, only: [:create], module: :users
 end
