@@ -35,10 +35,10 @@ class OauthsController < ApplicationController
 
   def update_user_info(provider)
     sorcery_fetch_user_hash(provider)
-    github_id = @user_hash.dig(:user_info, "login")
+    github_id = @user_hash.dig(:user_info, 'login')
     return if github_id.blank?
     return if @user.github_id == github_id
 
-    @user.update(github_id: github_id)
+    @user.update(github_id:)
   end
 end
