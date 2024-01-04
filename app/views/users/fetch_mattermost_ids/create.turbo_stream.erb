@@ -1,0 +1,5 @@
+<%= turbo_stream.replace 'user_mattermost_id' do %>
+  <%= fields_for :user do |f| %>
+    <%= f.text_field :mattermost_id, class: "form-control bg-secondary-subtle", readonly: true, value: @user.mattermost_id %>
+  <% end %>
+<% end %>
