@@ -21,7 +21,7 @@ class ReviewRequest < ApplicationRecord
   private
 
   def set_reviewer
-    self.reviewer = reviewer.presence || group.users.where.not(id: reviewee_id).sample
+    self.reviewer = reviewer.presence || group.user_order_by_reviewer_amount(reviewee.id)
   end
 
   def set_message

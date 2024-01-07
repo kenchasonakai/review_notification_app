@@ -8,4 +8,10 @@ class Group < ApplicationRecord
   def added_at(user)
     group_members.find_by(user:).created_at
   end
+
+  def user_order_by_reviewer_amount(reviewee_id)
+    users.where.not(id: reviewee_id)
+         .joins('LEFT JOIN review_requests ON review_requests.reviewer_id=users.id')
+         .group(:id).order('count(review_requests.id)').first
+  end
 end
