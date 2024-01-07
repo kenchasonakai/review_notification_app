@@ -14,8 +14,8 @@ class ReviewRequest < ApplicationRecord
     reviewer_text = "レビュワー: #{reviewer.nickname}さん \n"
     pull_request_url_text = "url: #{url} \n"
     text = "#{mention_text}#{reviewer_text}#{pull_request_url_text}#{message}"
-    channel = group.mattermost_channel_id
-    Notification::Mattermost.new(message: text, channel:).call
+    mattermost_channel = group.mattermost_channel_id
+    Notification::Mattermost.new(message: text, mattermost_channel:).call
   end
 
   private
