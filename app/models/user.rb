@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def group
     groups&.sample
   end
+
+  def activate!
+    update!(activated: true)
+  end
 end
