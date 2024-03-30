@@ -28,7 +28,7 @@ class ReviewRequestsController < ApplicationController
   private
 
   def review_request_params
-    params.require(:review_request).permit(:url, :message).merge(group: current_user.group)
+    params.require(:review_request).permit(:url, :message).merge(group: select_group)
   end
 
   def check_user_profile
@@ -43,5 +43,11 @@ class ReviewRequestsController < ApplicationController
 
     flash[:notice] = 'グループに参加していません'
     redirect_to new_join_groups_path
+  end
+
+  def select_group
+    return current_user.groups.find(params[:group_id]) if params[:group_id].present?
+
+    current_user.group
   end
 end

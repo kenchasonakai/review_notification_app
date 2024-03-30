@@ -26,6 +26,10 @@ class User < ApplicationRecord
     groups.present?
   end
 
+  def joined_multiple_groups?
+    groups.count > 1
+  end
+
   def group
     groups&.sample
   end
