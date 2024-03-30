@@ -6,7 +6,11 @@
       <% @groups.each do |group| %>
         <div class="card mb-3">
           <div class="card-body d-flex justify-content-between">
-            <p class="card-text">channel_id: <%= group.mattermost_channel_id.presence || 'チャンネルIDが設定されていません' %></p>
+            <% if group.mattermost_channel_id.present? %>
+              <p class="card-text">channel_id: <%= link_to group.mattermost_channel_id, "https://chat.runteq.jp/runteq/channels/#{group.mattermost_channel_id}" %></p>
+            <% else %>
+              <p class="card-text">channel_id: チャンネルIDが設定されていません</p>
+            <% end %>
             <% if group.joined?(current_user) %>
               参加済み
             <% else %>
