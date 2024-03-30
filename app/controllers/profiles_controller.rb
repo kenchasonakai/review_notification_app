@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   # NOTE: current_userで取得したユーザーのみを対象とするため、authorizeメソッドをスキップする
-  skip_after_action :verify_authorized, only: %i[show edit update]
+  skip_after_action :verify_authorized, only: %i[show edit update destroy]
 
   def show; end
 
@@ -16,6 +16,11 @@ class ProfilesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    current_user.destroy!
+    redirect_to root_path, notice: 'アカウントを削除しました。'
   end
 
   private

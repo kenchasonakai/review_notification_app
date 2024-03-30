@@ -12,9 +12,8 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><%= link_to 'レビュー依頼', review_requests_path, class: "dropdown-item" %></li>
-            <li><a class="dropdown-item disabled" href="#">マイページ</a></li>
-            <li><%= link_to 'プロフィール', profile_path, class: "dropdown-item" %></li>
             <li><%= link_to 'グループ一覧', new_join_groups_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'マイページ', profile_path, class: "dropdown-item" %></li>
             <% if current_user.admin? %>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'グループ管理', groups_path, class: "dropdown-item" %></li>
