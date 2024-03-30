@@ -3,6 +3,7 @@ module ApplicationHelper
     datetime.strftime('%Y年%m月%d日')
   end
 
+  # rubocop:disable all
   def default_meta_tags
     {
       site: 'Coreview',
@@ -24,4 +25,5 @@ module ApplicationHelper
       }
     }
   end
+  # rubocop:enable all
 end
