@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
-  # TODO: topページを作成する
-  # root "static_pages#home"
-  root "review_requests#index"
+  root "static_pages#home"
 
   post "oauth/callback" => "oauths#callback"
   get "oauth/callback" => "oauths#callback"

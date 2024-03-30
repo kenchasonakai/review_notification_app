@@ -1,0 +1,47 @@
+<div class="d-block px-3 py-2 text-center text-bold skippy" style="background-color: #ffc0cb;">
+  このサービスはRUNTEQ生向けのサービスです。GitHubのRUNTEQ Organizationに所属している方のみ利用可能です。
+</div>
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <%= image_tag 'undraw_web_devices_re_m8sc.svg', class: 'd-block mx-lg-auto img-fluid', width: '700', height: "500", loading: "lazy" %>
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-6 fw-bold text-body-emphasis lh-1 mb-3">個人開発にもレビュー体験を</h1>
+      <p class="lead">アプリを作る際に自分の視点だけでなく他人の視点を入れながら開発をすることでアプリをより使いやすく、完成度の高いものにすることが出来ます。</p>
+      <p class="lead">また、レビューすることを通してGitの操作やGitHubの使い方などチーム開発で必要なスキルを身につけることが出来ます。</p>
+      <p class="lead">Coreviewを使って個人開発をより楽しく、より学びのあるものにしましょう。</p>
+    </div>
+  </div>
+  <div class="row align-items-md-stretch">
+    <div class="col-md-6">
+      <div class="h-100 p-5 text-bg-dark rounded-3">
+        <h2>コードレビューをする</h2>
+        <p>
+          レビュー一覧にあるプルリクエストを見て、コードレビューを行いましょう。
+        </p>
+        <p>
+          ログイン後グループに所属することでレビュワーに自動でアサインされRUNTEQのMattermostであなた宛にレビュー依頼が届きます。
+        </p>
+        <%= link_to review_requests_path, class: 'btn btn-outline-light d-flex align-items-center' do %>
+          <span class="ms-2">どんなレビュー依頼があるか見る</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <h2>レビュー依頼をする</h2>
+        <p>
+          ログイン後、プロフィールの登録とグループへの所属を行うとレビュー依頼をすることが出来ます。
+        </p>
+        <p>
+          レビュー依頼はRUNTEQのMattermostに通知されるので該当のチャンネルに参加しておきましょう。
+        </p>
+        <%= link_to auth_at_provider_path(:provider => :github), class: 'btn btn-secondary d-flex align-items-center' do %>
+          <span><i class="bi bi-github h3"></i></span>
+          <span class="ms-2">ログインして始める</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
