@@ -12,7 +12,7 @@ class OauthsController < ApplicationController
     @user = login_from(provider)
     if @user
       update_user_info(provider)
-      redirect_to root_path, notice: 'ログインしました'
+      redirect_to review_requests_path, notice: 'ログインしました'
     else
       create_user_from_provider(provider)
     end
