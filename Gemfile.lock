@@ -139,6 +139,8 @@ GEM
       event_emitter (~> 0.2)
       faye-websocket (~> 0.10)
       httparty (~> 0.15)
+    meta-tags (2.20.0)
+      actionpack (>= 6.0.0, < 7.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
@@ -310,6 +312,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   mattermost-api4-ruby
+  meta-tags
   mysql2 (~> 0.5)
   octokit (~> 5.0)
   pry-byebug
