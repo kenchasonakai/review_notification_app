@@ -14,4 +14,8 @@ class Group < ApplicationRecord
          .joins('LEFT JOIN review_requests ON review_requests.reviewer_id=users.id')
          .group(:id).order('count(review_requests.id)').first
   end
+
+  def joined?(user)
+    users.include?(user)
+  end
 end
