@@ -42,6 +42,6 @@ class ReviewRequestsController < ApplicationController
     return if current_user.joined_any_group?
 
     flash[:notice] = 'グループに参加していません'
-    redirect_to review_requests_path
+    redirect_to new_join_groups_path
   end
 end
