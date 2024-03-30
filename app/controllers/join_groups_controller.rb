@@ -1,6 +1,4 @@
 class JoinGroupsController < ApplicationController
-  skip_after_action :verify_authorized
-
   def new
     @groups = Group.all
     authorize :group_member, :new?
