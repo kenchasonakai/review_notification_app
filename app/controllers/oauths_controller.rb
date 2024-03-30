@@ -1,6 +1,7 @@
 class OauthsController < ApplicationController
   skip_before_action :require_login
   skip_after_action :verify_authorized
+  after_action :auto_activate, only: :callback
 
   def oauth
     login_at(auth_params[:provider])
@@ -40,5 +41,12 @@ class OauthsController < ApplicationController
     return if @user.github_id == github_id
 
     @user.update(github_id:)
+  end
+
+  def auto_activate
+    return if @user.blank? || @user.activated?
+
+    client = Octokit::Client.new(access_token: Rails.application.credentials.dig(:github, :access_token))
+    @user.activate! if client.org_member?('runteq', @user.github_id)
   end
 end
