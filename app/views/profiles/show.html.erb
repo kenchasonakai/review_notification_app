@@ -37,7 +37,13 @@
                 </div>
                 <div class="row pt-1">
                   <div class="mb-3">
-                    <h6 class="h5">所属グループ</h6>
+                    <div class="d-flex">
+                      <h6 class="h5">所属グループ</h6>
+                      <%= link_to new_join_groups_path, class: 'ms-3' do %>
+                        <i class="bi bi-plus-square h4"></i>
+                      <% end %>
+                    </div>
+                    <ul class="list-unstyled" id="new_join_group_list"></ul>
                     <ul class="list-unstyled">
                       <% current_user.groups.each do |group| %>
                         <li><%= group.name %></li>

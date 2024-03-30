@@ -1,0 +1,57 @@
+<div class="container w-50 p-2">
+  <h1>グループ一覧</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <% @groups.each do |group| %>
+        <div class="card mb-3">
+          <div class="card-body d-flex justify-content-between">
+            <p class="card-text">channel_id: <%= group.mattermost_channel_id.presence || 'チャンネルIDが設定されていません' %></p>
+            <% if group.joined?(current_user) %>
+              参加済み
+            <% else %>
+              <%= link_to join_groups_path(group_id: group.id), class: 'btn btn-primary', data: { turbo_method: :post } do %>
+                <i class="bi bi-plus"></i> チャンネルに参加
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-body text-center">
+          </div>
+          <div class="card-body">
+            <div class="table">
+              <table class="table no-wrap mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="border-0 text-uppercase font-medium">メンバー名</th>
+                    <th scope="col" class="border-0 text-uppercase font-medium">グループ追加日</th>
+                    <th scope="col" class="border-0"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% group.users.each do |user| %>
+                    <tr>
+                      <td>
+                        <span class="font-medium mb-0"><%= user.nickname || '設定されていません' %></h5>
+                      </td>
+                      <td>
+                        <span class="text-muted"><%= strfdate(group.added_at(user)) %></span>
+                      </td>
+                      <% if user == current_user %>
+                        <td>
+                          <%= link_to join_groups_path(group_id: group.id), data: { turbo_method: :delete, turbo_confirm: "#{group.name}から抜けますか？" } do %>
+                            <i class="bi bi-file-minus h4 text-danger"></i>
+                          <% end %>
+                        </td>
+                      <% end %>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

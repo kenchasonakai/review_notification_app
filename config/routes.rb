@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     resource :activate, only: [:create, :destroy], module: :users
   end
   resource :fetch_mattermost_id, only: [:create], module: :users
+  resource :join_groups, only: [:new, :create, :destroy]
 end
