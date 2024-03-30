@@ -6,6 +6,14 @@
   <%= form_with model: @review_request do |f| %>
     <div class="card mt-3 p-3">
       <div class="card-body">
+        <% if current_user.joined_multiple_groups? %>
+          <div class="form-group mb-3">
+            <%= f.label :group_id, '対象グループ' %>
+            <%= f.collection_select :group_id, current_user.groups, :id, :name, { prompt: '選択してください' }, class: "form-control" %>
+          </div>
+        <% else %>
+          <p>対象グループ: <%= current_user.group.name %></p>
+        <% end %>
         <div class="form-group mb-3">
           <%= f.label :url do %>
             <%= ReviewRequest.human_attribute_name(:url) %>
