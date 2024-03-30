@@ -1,3 +1,4 @@
+<%= render 'unsubscribe_modal' %>
 <section>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -50,6 +51,9 @@
                       <% end %>
                     </ul>
                   </div>
+                </div>
+                <div class="pt-1">
+                  <%= link_to 'アカウント削除方法はこちら', nil, data: { bs_toggle: "modal", bs_target: "#staticBackdrop" } %>
                 </div>
               </div>
             </div>
