@@ -37,6 +37,8 @@ gem "octokit", "~> 5.0"
 
 gem "meta-tags"
 
+gem 'config'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
