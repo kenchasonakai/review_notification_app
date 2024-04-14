@@ -1,7 +1,7 @@
 github:
-  access_token: <%= Rails.application.credentials.dig(:github, :access_token) %>
-  client_id: <%= Rails.application.credentials.github[:client_id] %>
-  client_secret: <%= Rails.application.credentials.github[:client_secret] %>
+  access_token: <%= ENV['GITHUB_ACCESS_TOKEN'] %>
+  client_id: <%= ENV['GITHUB_CLIENT_ID'] %>
+  client_secret: <%= ENV['GITHUB_CLIENT_SECRET'] %>
   callback_url: "http://localhost:3000/oauth/callback?provider=github"
 mattermost:
-  webhook_url: <%= Rails.application.credentials.dig(:mattermost, :webhook_url) %>
+  webhook_url: <%= ENV['MATTERMOST_WEBHOOK_URL'] %>
