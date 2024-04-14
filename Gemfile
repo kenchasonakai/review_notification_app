@@ -37,6 +37,9 @@ gem "octokit", "~> 5.0"
 
 gem "meta-tags"
 
+# NOTE: configよりも前にdotenvを読み込む
+gem 'dotenv', groups: [:development, :test]
+
 gem 'config'
 
 gem "pundit", "~> 2.3"
@@ -62,7 +65,6 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'pry-byebug'
-  gem 'dotenv'
 end
 
 group :development do
