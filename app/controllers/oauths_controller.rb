@@ -46,7 +46,7 @@ class OauthsController < ApplicationController
   def auto_activate
     return if @user.blank? || @user.activated?
 
-    client = Octokit::Client.new(access_token: Rails.application.credentials.dig(:github, :access_token))
+    client = Octokit::Client.new(access_token: Settings.github.access_token)
     @user.activate! if client.org_member?('runteq', @user.github_id)
   end
 end

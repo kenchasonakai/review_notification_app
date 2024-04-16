@@ -10,7 +10,7 @@ module Notification
     private
 
     def send_mattermost
-      uri = URI.parse(Rails.application.credentials.dig(:mattermost, :webhook_url))
+      uri = URI.parse(Settings.mattermost.webhook_url)
       header = { 'Content-Type': 'application/json' }
       data = { text: message,
                channel: mattermost_channel,

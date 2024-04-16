@@ -37,6 +37,13 @@ gem "octokit", "~> 5.0"
 
 gem "meta-tags"
 
+# NOTE: configよりも前にdotenvを読み込む
+gem 'dotenv', groups: [:development, :test]
+
+gem 'config'
+
+gem "pundit", "~> 2.3"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -71,6 +78,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
-
-gem "pundit", "~> 2.3"

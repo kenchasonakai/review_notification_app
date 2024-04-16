@@ -1,0 +1,7 @@
+github:
+  access_token: <%= ENV['GITHUB_ACCESS_TOKEN'] %>
+  client_id: <%= ENV['GITHUB_CLIENT_ID'] %>
+  client_secret: <%= ENV['GITHUB_CLIENT_SECRET'] %>
+  callback_url: "http://localhost:3000/oauth/callback?provider=github"
+mattermost:
+  webhook_url: <%= ENV['MATTERMOST_WEBHOOK_URL'] %>
